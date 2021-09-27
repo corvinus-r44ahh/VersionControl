@@ -26,15 +26,18 @@ namespace UserMaintenance
             listUsers.ValueMember = "ID";
             listUsers.DisplayMember = "FullName";
 
-            var u = new User()
+           
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+ var u = new User()
             {
                 LastName = txtLastName.Text,
                 FirstName = txtFirstName.Text
             };
             users.Add(u);
-
         }
-
-       
     }
 }
