@@ -35,6 +35,7 @@ namespace UserMaintenance
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblLastName = new System.Windows.Forms.Label();
             this.lblFirstName = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listUsers
@@ -66,7 +67,7 @@ namespace UserMaintenance
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(178, 23);
             this.btnAdd.TabIndex = 3;
-            this.btnAdd.Text = "button1";
+            this.btnAdd.Text = "Hozzáadás";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -88,11 +89,22 @@ namespace UserMaintenance
             this.lblFirstName.TabIndex = 5;
             this.lblFirstName.Text = "label2";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(533, 205);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(178, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.lblLastName);
             this.Controls.Add(this.btnAdd);
@@ -114,6 +126,7 @@ namespace UserMaintenance
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lblLastName;
         private System.Windows.Forms.Label lblFirstName;
+        private System.Windows.Forms.Button button1;
     }
 }
 
