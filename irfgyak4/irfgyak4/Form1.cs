@@ -12,9 +12,18 @@ namespace irfgyak4
 {
     public partial class Form1 : Form
     {
+        RealEstateEntities context = new RealEstateEntities();
+        List<Flat> Flat;
+
         public Form1()
         {
             InitializeComponent();
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            Flat = context.Flat.ToList();
         }
     }
 }
