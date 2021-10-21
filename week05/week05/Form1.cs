@@ -50,7 +50,7 @@ namespace week05
             var nyereségekRendezve = (from x in Nyereségek
                                       orderby x
                                       select x)
-                                        .ToList();
+                                        .ToList(); 
             MessageBox.Show(nyereségekRendezve[nyereségekRendezve.Count() / 5].ToString());
         }
 
