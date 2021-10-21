@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,13 +18,14 @@ namespace week05
         PortfolioEntities context = new PortfolioEntities();
         List<Tick> Ticks;
         List<PortfolioItem> Portfolio = new List<PortfolioItem>();
-
+        List<decimal> Nyereségek = new List<decimal>();
         public Form1()
         {
             InitializeComponent();
             Ticks = context.Ticks.ToList();
             dataGridView1.DataSource = Ticks;
             CreatePortfolio();
+            SaveFile();
         }
 
         private void CreatePortfolio()
@@ -34,7 +36,7 @@ namespace week05
 
             dataGridView2.DataSource = Portfolio;
 
-            List<decimal> Nyereségek = new List<decimal>();
+            
             int intervalum = 30;
             DateTime kezdőDátum = (from x in Ticks select x.TradingDay).Min();
             DateTime záróDátum = new DateTime(2016, 12, 30);
@@ -67,6 +69,24 @@ namespace week05
                 value += (decimal)last.Price * item.Volume;
             }
             return value;
+        }
+
+        private void SaveFile()
+        {
+            SaveFileDialog save = new SaveFileDialog();
+            save.InitialDirectory = Application.StartupPath;
+            save.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+            if (save.ShowDialog() != DialogResult.OK) return;
+            using (StreamWriter kiiras = new StreamWriter(save.FileName, false, Encoding.UTF8))
+            {
+
+                kiiras.WriteLine("Időszak\tNyereség");
+                for (int i = 0; i < Nyereségek.Count; i++)
+                {
+                    kiiras.WriteLine((i + 1).ToString() + "\t" + Nyereségek[i]);
+                }
+            }
         }
     }
 }
