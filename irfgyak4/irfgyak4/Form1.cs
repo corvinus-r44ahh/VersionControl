@@ -32,6 +32,7 @@ namespace irfgyak4
 
         private void LoadData()
         {
+            
             Flat = context.Flat.ToList();
         }
 
