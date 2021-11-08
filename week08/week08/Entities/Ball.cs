@@ -5,31 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using week08.Entities.Abstractions;
 
 namespace week08.Entities
 {
-    class Ball : Label
+    public class Ball : Toy
     {
-        public Ball()
+        public SolidBrush BallColor { get; private set; }
+        public Ball(Color color)
         {
-            AutoSize = false;
-            Width = 50;
-            Height = 50;
-            Paint += Ball_Paint;
+            BallColor = new SolidBrush(color);
         }
 
-        private void Ball_Paint(object sender, PaintEventArgs e)
+        protected override void DrawImage(Graphics g)
         {
-            DrawImage(e.Graphics);
-        }
-        protected void DrawImage(Graphics g)
-        {
-            g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
-        }
-
-        public void MoveBall()
-        {
-            Left += 1;
+            g.FillEllipse(BallColor, 0, 0, Width, Height);
         }
     }
 }
